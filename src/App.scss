@@ -1,0 +1,851 @@
+*,
+*::after,
+*::before {
+    padding: 0;
+    margin: 0;
+}
+
+$primary-bg: #d6a354;
+$secondary-bg: #4caf50;
+$notfound-bg: linear-gradient(rgb(73, 185, 223), aliceblue, white);
+
+$hero-bg: url(./images/background.jpg);
+$auth-bg: url(./images/bglogin.jpg);
+
+$black-color: #000;
+$white-color: #fff;
+$gray-color: #717275;
+$red-color: #c12828;
+$cyan-color: #22c1c3;
+$gold-color: gold;
+
+$box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+
+/*---------------------------------------
+NOT FOUND PAGE           
+-----------------------------------------*/
+
+#notfoundbg {
+    background-image: $notfound-bg;
+}
+
+/*---------------------------------------
+Bootstrap           
+-----------------------------------------*/
+.font-weight-bold {
+    font-weight: bold;
+}
+
+.margin-left-10 {
+    margin-left: 10px;
+}
+
+.margin-right-10 {
+    margin-right: 10px;
+}
+
+#scroll-to-top {
+    background-color: $primary-bg;
+}
+
+/*---------------------------------------
+Authentication Appearance           
+-----------------------------------------*/
+#auth-bg {
+    min-height: 100vh;
+    background-image: $auth-bg;
+    background-position: center;
+    background-size: cover;
+
+    #login-text {
+        animation: appear 1s linear;
+        display: block;
+        font-size: 1.5em;
+        margin-block-start: 0.83em;
+        margin-block-end: 0.83em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        font-weight: bold;
+        unicode-bidi: isolate;
+        text-align: center;
+    }
+
+    #auth-sign {
+        display: block;
+        font-size: 2em;
+        margin-block-start: 0.67em;
+        margin-block-end: 0.67em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        font-weight: bold;
+        color: $white-color;
+        text-shadow: 0 0 10px $gold-color;
+    }
+}
+
+.login-form {
+    background-color: $white-color;
+    border-radius: 10px;
+    box-shadow: $box-shadow;
+    transition: all 0.3s ease;
+    width: 400px;
+    padding: 30px;
+}
+
+.input-container {
+    width: 320px;
+    display: block;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+#submit-button {
+    width: 95%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: $secondary-bg;
+    color: $white-color;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: block;
+    margin: auto;
+
+    &:hover {
+        background-color: $secondary-bg;
+    }
+}
+
+.forgot-password {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    #link {
+        color: $secondary-bg;
+        text-decoration: none;
+    }
+}
+
+.register-link {
+    text-align: center;
+    margin-top: 15px;
+
+    #link {
+        color: $secondary-bg;
+        text-decoration: none;
+    }
+
+    #link:hover {
+        text-decoration: underline;
+    }
+}
+
+/*---------------------------------------
+Home Appearance 
+-----------------------------------------*/
+
+#homebg {
+    animation: appear 2s linear;
+
+    h3 {
+        padding-top: 5px;
+        font-size: 30px;
+        font-family: "Lato", sans-serif;
+        font-weight: bold;
+        font-style: normal;
+    }
+}
+
+#sidebartoogle:hover {
+    background-color: $primary-bg;
+}
+
+/*---------------------------------------
+TYPOGRAPHY               
+-----------------------------------------*/
+
+h1 {
+    font-size: 74px;
+}
+
+h2 {
+    font-size: 46px;
+}
+
+h3 {
+    font-size: 32px;
+}
+
+h4 {
+    font-size: 28px;
+}
+
+h5 {
+    font-size: 24px;
+}
+
+h6 {
+    font-size: 22px;
+}
+
+p {
+    color: $gray-color;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+ul li {
+    color: $gray-color;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+a,
+button {
+    touch-action: manipulation;
+    transition: all 0.3s;
+}
+
+.trans-scale:hover {
+    transform: scale(1.1);
+}
+
+/*---------------------------------------
+SECTION               
+-----------------------------------------*/
+.section-padding {
+    padding: 100px 50px;
+}
+
+.section-bg {
+    background-color: $white-color;
+}
+
+.section-overlay {
+    background-color: $black-color;
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+    opacity: 0.45;
+
+    + .container {
+        position: relative;
+    }
+}
+
+/*---------------------------------------
+HERO OR LANDING PAGE
+-----------------------------------------*/
+.hero-section {
+    background-image: $hero-bg;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+    padding: 50px;
+    padding-bottom: 0;
+    min-height: 665px;
+    border-bottom: 15px solid $primary-bg;
+
+    .container {
+        position: relative;
+        z-index: 2;
+    }
+
+    &::after {
+        content: "";
+        background-image: linear-gradient(90deg, #fdbb2d 0%, #22c1c3 100%);
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        opacity: 0.65;
+    }
+
+    .custom-block {
+        border: 10px solid $primary-bg;
+        border-radius: 100%;
+        position: absolute;
+        z-index: 2;
+        bottom: -60px;
+        right: -60px;
+        padding: 50px 90px 50px 50px;
+        width: 360px;
+        height: 360px;
+    }
+}
+
+.custom-btn {
+    display: inline-block;
+    box-shadow: 2px 2px 0 $black-color;
+}
+
+.custom-block .custom-btn {
+    background: $red-color;
+}
+
+.custom-block-image {
+    border: 10px solid $primary-bg;
+    border-radius: 100%;
+    position: absolute;
+    top: -60px;
+    right: 20px;
+    left: 0;
+    width: 120px;
+    height: 120px;
+    margin: auto;
+    object-fit: cover;
+}
+
+.custom-block-bg-overlay-wrap {
+    background: $primary-bg;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background-image: linear-gradient(90deg, #fdbb2d 0%, #22c1c3 100%);
+        transform: scale(1.05);
+
+        .service-info {
+            bottom: 10px;
+        }
+    }
+}
+
+.custom-block-bg-overlay-image {
+    border-radius: 20px;
+    display: block;
+    margin: auto;
+    height: 100%;
+    object-fit: cover;
+    transform: rotate(8deg);
+}
+
+.custom-btn {
+    background-color: $red-color;
+    border: 2px solid transparent;
+    border-radius: 100px;
+    color: $white-color;
+    font-size: 16px;
+    font-weight: 20px;
+    line-height: normal;
+    transition: all 0.3s;
+    padding: 10px 20px;
+}
+
+.custom-border-btn {
+    background: transparent;
+    border: 2px solid $red-color;
+    color: $red-color;
+}
+
+.custom-btn-bg-white {
+    border-color: $white-color;
+    color: $white-color;
+    font-weight: bold;
+    text-shadow: 0 0 10px $black-color;
+}
+
+.custom-btn-italic {
+    font-style: italic;
+}
+
+/*---------------------------------------
+SERVICE           
+-----------------------------------------*/
+.service-section {
+    h6 {
+        color: $red-color;
+    }
+
+    .custom-block-bg-overlay-image {
+        width: 100%;
+        max-height: 250px;
+    }
+
+    .custom-block-bg-overlay-wrap {
+        position: relative;
+    }
+
+    .service-info {
+        background: $white-color;
+        border-radius: 100px;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        margin: 10px 40px;
+        padding: 10px 17px 10px 20px;
+        transition: all 0.3s ease;
+    }
+}
+
+/*---------------------------------------
+MOCKUP        
+-----------------------------------------*/
+.mockup-section {
+    background-image: url(./images/background.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    position: relative;
+    text-align: center;
+
+    p {
+        color: $white-color;
+    }
+
+    strong {
+        background: $primary-bg;
+        border-radius: 20px;
+        display: inline-block;
+        margin-top: 10px;
+        padding: 10px 20px;
+    }
+}
+
+/*---------------------------------------
+FEATURES            
+-----------------------------------------*/
+.features-thumb {
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+
+    &:hover {
+        .features-info {
+            border-color: $primary-bg;
+            border-width: 5px;
+        }
+
+        .features-image {
+            transform: scale(1.05);
+        }
+    }
+}
+
+.features-image {
+    border-radius: 20px;
+    display: block;
+    margin: auto;
+    transition: all 0.3s;
+}
+
+.features-thumb-price {
+    background: $primary-bg;
+    border-radius: 20px;
+    font-size: 14px;
+    margin-left: auto;
+    padding: 5px 10px;
+}
+
+.price-fontweight-bold {
+    font-size: 1.6rem;
+}
+
+.features-info {
+    border-radius: 20px;
+    border: 1px solid $white-color;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: 20px;
+    padding: 25px 30px;
+    transition: all 0.3s ease;
+
+    h4 {
+        color: $white-color;
+    }
+}
+
+/*---------------------------------------
+BOOKING               
+-----------------------------------------*/
+.booking-section {
+    background-image: url(./images/background.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
+
+.booking-form {
+    background: $white-color;
+    border-radius: 20px;
+    padding: 65px;
+}
+
+#captcha {
+    width: 100%;
+}
+
+/*---------------------------------------
+CUSTOM FORM               
+-----------------------------------------*/
+.custom-form {
+    .form-control {
+        color: $gray-color;
+        margin-bottom: 24px;
+        padding-top: 13px;
+        padding-bottom: 13px;
+        outline: none;
+        transition: all 0.3s;
+    }
+
+    .form-control:hover,
+    .form-control:focus {
+        background: $white-color;
+        border-color: transparent;
+    }
+}
+
+.custom-form button[type="submit"] {
+    background: $red-color;
+    border: none;
+    border-radius: 100px;
+    color: $white-color;
+    font-size: 20px;
+    font-weight: var(--font-weight-medium);
+    transition: all 0.3s;
+    margin-bottom: 0;
+}
+
+.custom-form button[type="submit"]:hover,
+.custom-form button[type="submit"]:focus {
+    background: $primary-bg;
+    border-color: transparent;
+}
+
+/*---------------------------------------
+CONTACT               
+-----------------------------------------*/
+
+.iframe-container {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 aspect ratio */
+
+    iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.google-map {
+    border-radius: 20px;
+    filter: hue-rotate(45deg);
+}
+
+#google-iframe {
+    height: 40vh;
+}
+
+.contact-block-wrap {
+    background: $cyan-color;
+    border-radius: 20px;
+    min-height: 200px;
+}
+
+.contact-block {
+    background-color: $primary-bg;
+    border-radius: 20px;
+    transform: rotate(2deg);
+    padding: 20px 40px;
+}
+
+.contact-block h6 {
+    transform: rotate(-1deg);
+}
+
+.contact-block .custom-icon {
+    background: $cyan-color;
+    border-radius: 100px;
+    display: block;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    position: relative;
+}
+
+.contact-block strong {
+    display: block;
+    color: $white-color;
+    text-transform: uppercase;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+/*---------------------------------------
+SOCIAL ICON               
+-----------------------------------------*/
+.social-icon {
+    margin-bottom: 20px;
+}
+
+.social-icon-item {
+    list-style: none;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.social-icon-link {
+    background: $red-color;
+    border-radius: 100px;
+    color: $white-color;
+    font-size: 14px;
+    display: block;
+    margin: 0 3px;
+    text-align: center;
+    width: 35px;
+    height: 35px;
+    line-height: 36px;
+    transition: background 0.2s, color 0.2s;
+
+    &:hover {
+        background: $primary-bg;
+        color: $white-color;
+    }
+
+    span {
+        display: block;
+    }
+}
+
+/*---------------------------------------
+RESPONSIVE STYLES               
+-----------------------------------------*/
+@media screen and (max-width: 1200px) {
+    h1 {
+        font-size: 62px;
+    }
+
+    #google-iframe {
+        height: 40vh;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    h1 {
+        font-size: 54px;
+    }
+
+    h2 {
+        font-size: 36px;
+    }
+
+    h3 {
+        font-size: 32px;
+    }
+
+    h4 {
+        font-size: 28px;
+    }
+
+    h5 {
+        font-size: 20px;
+    }
+
+    h6 {
+        font-size: 18px;
+    }
+
+    .section-padding,
+    .hero-section {
+        padding: 50px 25px;
+    }
+
+    .custom-block {
+        display: none;
+    }
+
+    .navbar {
+        background-color: $black-color;
+    }
+
+    .navbar-expand-lg .navbar-nav {
+        padding-bottom: 30px;
+    }
+
+    .navbar-expand-lg .navbar-nav .nav-link {
+        padding: 0;
+    }
+
+    .booking-form {
+        padding: 45px;
+    }
+
+    #custom-account {
+        box-shadow: 0 0 10px $black-color;
+        max-width: 800px;
+        padding: 10px;
+    }
+
+    #custom-account::after {
+        content: "Welcome to Villa Aurora";
+        position: fixed;
+        text-align: center;
+        top: 0;
+        right: 0;
+        left: 0;
+        font-size: 30px;
+        background-color: $primary-bg;
+        z-index: 999;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .custom-btn {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+
+    #sidebarMenu {
+        background-color: $primary-bg;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    h1 {
+        font-size: 38px;
+    }
+
+    #sztext {
+        font-size: 50px;
+    }
+
+    #bglogin {
+        height: 105vh;
+    }
+
+    h2 {
+        font-size: 28px;
+    }
+
+    h3 {
+        font-size: 26px;
+    }
+
+    h4 {
+        font-size: 22px;
+    }
+
+    h5 {
+        font-size: 20px;
+    }
+
+    .services-info h4 {
+        font-size: 20px;
+    }
+
+    .booking-form {
+        padding: 35px;
+    }
+
+    #sidebarMenu {
+        background-color: $primary-bg;
+    }
+
+    #google-iframe {
+        height: 30vh;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    #captcha {
+        transform: scale(0.66);
+        transform-origin: 0;
+    }
+}
+
+@media screen and (min-width: 991px) {
+    .hero-section {
+        height: calc(100vh - 0px);
+    }
+}
+
+@media screen and (max-width: 375px) {
+    #sztext {
+        font-size: 50px;
+    }
+
+    #custom-account {
+        box-shadow: 0 0 10px $black-color;
+        max-width: 300px;
+        padding: 10px;
+    }
+
+    #custom-account::after {
+        content: "Welcome to Villa Aurora";
+        position: fixed;
+        text-align: center;
+        top: 0;
+        right: 0;
+        left: 0;
+        font-size: 30px;
+        background-color: $primary-bg;
+        z-index: 999;
+    }
+
+    .arrow {
+        display: none;
+    }
+
+    #sidebarMenu {
+        background-color: $primary-bg;
+        width: 375px;
+        height: 100vh;
+    }
+
+    .close-btn {
+        position: fixed;
+        right: 0;
+        top: 0;
+        z-index: 999;
+    }
+
+    .login-form {
+        background-color: $white-color;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        width: 300px;
+        padding: 30px;
+    }
+
+    .input-container {
+        width: 220px;
+        display: block;
+        margin: auto;
+        margin-bottom: 20px;
+    }
+
+    #google-iframe {
+        height: 30vh;
+    }
+}
+
+/*---------------------------------------
+ANIMATIONS
+-----------------------------------------*/
+
+@keyframes appear {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
