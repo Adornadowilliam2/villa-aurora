@@ -122,7 +122,7 @@ function Navigation() {
                 <ListItem>
                     <ListItemIcon>
                         <Avatar
-                            src={`http://localhost:8000/storage/${user?.avatar}`}
+                            src={`https://backend-villa-aurora-production.up.railway.app/storage/${user?.avatar}`}
                             alt={user?.username ?? "User"}
                         />
                     </ListItemIcon>
