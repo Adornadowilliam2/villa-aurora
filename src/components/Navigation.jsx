@@ -60,12 +60,14 @@ function Navigation() {
                 toast.success(response?.message);
                 removeCookie("AUTH_TOKEN");
                 dispatch(logout(cookies.AUTH_TOKEN));
+                setActive(false);
                 navigate("/login");
             } else {
                 toast.error(response?.message);
             }
         });
     };
+    
 
     const checkActive = () => {
         if (cookies.AUTH_TOKEN) {
