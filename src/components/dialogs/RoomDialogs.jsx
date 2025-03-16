@@ -1,13 +1,4 @@
-import {
-    Box,
-    Button,
-    Dialog,
-    DialogActions,
-    DialogContent,
-    DialogTitle,
-    TextField,
-    Typography,
-} from "@mui/material";
+import { Box, Button, Dialog, DialogActions, DialogContent, Table, TableHead, DialogTitle, TextField, Typography, Grid, Paper, TableContainer, TableRow, TableCell, TableBody } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import $ from "jquery";
@@ -29,47 +20,7 @@ export function RoomDialog({
 }) {
     // For Rooms
     const [roomRows, setRoomRows] = useState([]);
-    // For Rooms
-    const roomcolumns = [
-        { field: "id", headerName: "ID" },
-        { field: "name", headerName: "Room Name", width: 160 },
-        { field: "price", headerName: "Room Price" },
-        { field: "created_at", headerName: "Create At", width: 200 },
-        { field: "updated_at", headerName: "Update At", width: 200 },
-        {
-            field: "actions",
-            headerName: "",
-            sortable: false,
-            filterable: false,
-            renderCell: (params) => (
-                <Box
-                    sx={{
-                        display: "flex",
-                        gap: 1,
-                        justifyContent: "center",
-                        alignItems: "center",
-                        height: "100%",
-                    }}
-                >
-                    <Button
-                        variant="contained"
-                        color="warning"
-                        onClick={() => setEditDialog({ ...params.row })}
-                    >
-                        Edit
-                    </Button>
-                    <Button
-                        variant="contained"
-                        color="error"
-                        onClick={() => setDeleteDialog(params.row.id)}
-                    >
-                        Delete
-                    </Button>
-                </Box>
-            ),
-            width: 200,
-        },
-    ];
+ 
 
     const refreshData = () => {
         showAllRooms(cookies.AUTH_TOKEN).then((res) => {
@@ -176,7 +127,60 @@ export function RoomDialog({
                     Create Room
                 </Button>
             </Box>
-            <DataGrid autoHeight columns={roomcolumns} rows={roomRows} />
+            <TableContainer component={Paper} sx={{ display: { xs: 'none', md: 'block' } }}>
+                <Table sx={{ minWidth: 650 }} aria-label="responsive table">
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>ID</TableCell>
+                            <TableCell>Room name</TableCell>
+
+                            <TableCell>Price</TableCell>
+                            <TableCell>Created At</TableCell>
+                            <TableCell>Updated At</TableCell>
+
+                            <TableCell>Actions</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {roomRows.map((row) => (
+                            <TableRow key={row.id}>
+                                <TableCell>{row.id}</TableCell>
+                                <TableCell>{row.name}</TableCell>
+                                <TableCell>{row.price}</TableCell>
+
+                                <TableCell>{row.created_at}</TableCell>
+                                <TableCell>{row.updated_at}</TableCell>
+
+                                <TableCell>
+                                    <Button variant="contained" color="warning">Edit</Button>
+                                    <Button variant="contained" color="error">Delete</Button>
+                                </TableCell>
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+            </TableContainer>
+
+            {/* Card layout for smaller screens */}
+            <Grid container spacing={2} sx={{ display: { xs: 'flex', md: 'none' } }}>
+                {roomRows.map((row) => (
+                    <Grid item xs={12} sm={6} md={4} key={row.id}>
+                        <Paper sx={{ padding: 2, textAlign: 'left' }}>
+                            <Typography variant="h6">{row.username}</Typography>
+                            <Typography><strong>ID:</strong> {row.id}</Typography>
+                            <Typography><strong>Room name:</strong> {row.name}</Typography>
+                            <Typography><strong>Price:</strong> {row.price}</Typography>
+
+                            <Typography><strong>Created At:</strong> {row.created_at}</Typography>
+                            <Typography><strong>Updated At:</strong> {row.updated_at}</Typography>
+                            <Box sx={{ marginTop: 2 }}>
+                                <Button variant="contained" color="warning" sx={{ marginRight: 1 }}>Edit</Button>
+                                <Button variant="contained" color="error">Delete</Button>
+                            </Box>
+                        </Paper>
+                    </Grid>
+                ))}
+            </Grid>
             {/* Create Room */}
             <Dialog open={!!createDialog}>
                 <DialogTitle>Create Room Form</DialogTitle>

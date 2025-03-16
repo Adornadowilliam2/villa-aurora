@@ -8,9 +8,17 @@ import {
   DialogContent,
   DialogTitle,
   FormControl,
+  Grid,
   InputLabel,
   MenuItem,
+  Paper,
   Select,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
   TextField,
   Typography,
 } from "@mui/material";
@@ -38,61 +46,6 @@ export function UserDialogs({
   const [rows, setRows] = useState([]);
   const [file, setFile] = useState(null);
   const [preview, setPreview] = useState(null);
-  const columns = [
-    { field: "id", headerName: "ID", width: 10 },
-    { field: "username", headerName: "Username", width: 150 },
-    { field: "mobile", headerName: "Mobile", width: 150 },
-    { field: "email", headerName: "Email" },
-    { field: "role", headerName: "Role" },
-    { field: "created_at", headerName: "Create At", width: 200 },
-    { field: "updated_at", headerName: "Update At", width: 200 },
-    {
-      field: "avatar",
-      headerName: "Avatar",
-      width: 100,
-      renderCell: (params) => (
-        <Avatar
-          src={`https://backend-villa-aurora-production.up.railway.app/storage/${params.value}`}
-          alt="Avatar"
-          sx={{ width: 50, height: 50 }}
-        />
-      ),
-    },
-    {
-      field: "actions",
-      headerName: "",
-      sortable: false,
-      filterable: false,
-      renderCell: (params) => (
-        <Box
-          sx={{
-            display: "flex",
-            gap: 1,
-            justifyContent: "center",
-            alignItems: "center",
-            height: "100%",
-          }}
-        >
-          <Button
-            variant="contained"
-            color="warning"
-            onClick={() => setEditDialog({ ...params.row })}
-          >
-            Edit
-          </Button>
-
-          <Button
-            variant="contained"
-            color="error"
-            onClick={() => setDeleteDialog(params.row.id)}
-          >
-            Delete
-          </Button>
-        </Box>
-      ),
-      width: 200,
-    },
-  ];
 
   const onCreate = (e) => {
     e.preventDefault();
@@ -221,7 +174,62 @@ export function UserDialogs({
           Create User
         </Button>
       </Box>
-      <DataGrid autoHeight columns={columns} rows={rows} />
+      <TableContainer component={Paper} sx={{ display: { xs: 'none', md: 'block' } }}>
+        <Table sx={{ minWidth: 650 }} aria-label="responsive table">
+          <TableHead>
+            <TableRow>
+              <TableCell>ID</TableCell>
+              <TableCell>Username</TableCell>
+              <TableCell>Mobile</TableCell>
+              <TableCell>Email</TableCell>
+              <TableCell>Role</TableCell>
+              <TableCell>Created At</TableCell>
+              <TableCell>Updated At</TableCell>
+              <TableCell>Avatar</TableCell>
+              <TableCell>Actions</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {rows.map((row) => (
+              <TableRow key={row.id}>
+                <TableCell>{row.id}</TableCell>
+                <TableCell>{row.username}</TableCell>
+                <TableCell>{row.mobile}</TableCell>
+                <TableCell>{row.email}</TableCell>
+                <TableCell>{row.role}</TableCell>
+                <TableCell>{row.created_at}</TableCell>
+                <TableCell>{row.updated_at}</TableCell>
+                <TableCell><Avatar src={row.avatar} alt={row.username} /></TableCell>
+                <TableCell>
+                  <Button variant="contained" color="warning">Edit</Button>
+                  <Button variant="contained" color="error">Delete</Button>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+
+      {/* Card layout for smaller screens */}
+      <Grid container spacing={2} sx={{ display: { xs: 'flex', md: 'none' } }}>
+        {rows.map((row) => (
+          <Grid item xs={12} sm={6} md={4} key={row.id}>
+            <Paper sx={{ padding: 2, textAlign: 'left' }}>
+              <Typography variant="h6">{row.username}</Typography>
+              <Typography><strong>ID:</strong> {row.id}</Typography>
+              <Typography><strong>Mobile:</strong> {row.mobile}</Typography>
+              <Typography><strong>Email:</strong> {row.email}</Typography>
+              <Typography><strong>Role:</strong> {row.role}</Typography>
+              <Typography><strong>Created At:</strong> {row.created_at}</Typography>
+              <Typography><strong>Updated At:</strong> {row.updated_at}</Typography>
+              <Box sx={{ marginTop: 2 }}>
+                <Button variant="contained" color="warning" sx={{ marginRight: 1 }}>Edit</Button>
+                <Button variant="contained" color="error">Delete</Button>
+              </Box>
+            </Paper>
+          </Grid>
+        ))}
+      </Grid>
 
       {/* CREATE USER FORM DIALOG */}
       <Dialog
