@@ -171,7 +171,7 @@ function Home() {
                                     className="mb-4"
                                     style={{ fontFamily: "Lobster" }}
                                 >
-                                    Services
+                                   Events & Celebrations
                                 </Typography>
 
                                 <Box className="border-bottom pb-3 mb-5">

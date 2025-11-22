@@ -54,10 +54,7 @@ function BookingForm() {
     const onCreateTransaction = (e) => {
         e.preventDefault();
         if (!loading) {
-            // if (!recaptchaValue) {
-            //     toast.error("Please complete the reCAPTCHA.");
-            //     return;
-            // }
+
 
             const serviceIds = selectedServices.map((service) => service.id);
 
@@ -154,6 +151,9 @@ function BookingForm() {
 
     return (
         <>
+            <Typography sx={{textAlign:"center", fontSize: "30px", color:"black", fontWeight:"bold"}}>
+                Bookings Available
+            </Typography>
             <MyCalendar
                 events={events}
                 setEvents={setEvents}

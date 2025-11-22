@@ -142,14 +142,7 @@ function Navigation() {
                     </ListItem>
                 </a>
 
-                <a href="#section_2" style={{ textDecoration: "none" }}>
-                    <ListItem>
-                        <ListItemIcon>
-                            <ServicesIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="Services" />
-                    </ListItem>
-                </a>
+     
                 <a href="#about-us" style={{ textDecoration: "none" }}>
                     <ListItem>
                         <ListItemIcon>
@@ -308,13 +301,7 @@ function Navigation() {
                                 Home
                             </Button>
 
-                            <Button
-                                color="inherit"
-                                startIcon={<ServicesIcon />}
-                                href="#section_2"
-                            >
-                                Services
-                            </Button>
+                      
                             <Button
                                 color="inherit"
                                 startIcon={<InfoIcon />}
